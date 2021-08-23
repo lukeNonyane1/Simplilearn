@@ -125,20 +125,24 @@ name_of_days <- c("Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat")
 # Plot x(Days of the week from 0-6) y(count of each day of the week)
 x1 <- c(0 ,1, 2, 3, 4, 5, 6)
 y1 <- c(count_Sun, count_Mon, count_Tue, count_Wed, count_Thur, count_Fri, count_Sat)
-plot(x1, y1, xlab="Days of week", ylab="Occurrences of complaints", type="b", main="Daily Trend Chart of Customer Complaints", xlim=c(0,6), ylim=c(0,500))
+plot(x1, y1, xlab="Days of week", ylab="Number of complaints", type="b", main="Daily Trend Chart of Customer Complaints", xlim=c(0,6), ylim=c(0,500))
 text(x1, y1, labels = name_of_days, cex = 0.7, pos=3)
 
 # Provide a table with the frequency of complaint types.
 # https://www.statology.org/create-table-in-r/
+count(customer_complaints$Customer.Complaint) # Returns the count of each customer complaint within the data
+
+complaint_types <- customer_complaints$Customer.Complaint[0:2224] # Returns the type of complaint found on index n:n
+# Change complaint_types to factor
+complaint_types <- sapply(complaint_types, factor)
+complaint_types
 
 
+# Table
+tabl1 <- table(complaint_types,customer_complaints$Customer.Complaint[0:2224] )
+tabl1
 
-
-
-
-
-
-
+# Find out how to view tables in R
 
 
 
