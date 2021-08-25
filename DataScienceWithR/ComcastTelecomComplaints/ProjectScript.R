@@ -128,31 +128,21 @@ y1 <- c(count_Sun, count_Mon, count_Tue, count_Wed, count_Thur, count_Fri, count
 plot(x1, y1, xlab="Days of week", ylab="Number of complaints", type="b", main="Daily Trend Chart of Customer Complaints", xlim=c(0,6), ylim=c(0,500))
 text(x1, y1, labels = name_of_days, cex = 0.7, pos=3)
 
+############################################################################
+
 # Provide a table with the frequency of complaint types.
 # https://www.statology.org/create-table-in-r/
-count(customer_complaints$Customer.Complaint) # Returns the count of each customer complaint within the data
+# Create function to iterate through Customer.Complaint column and store the values in variable called complaint_types
+customer_type <- list()
+for (item in customer_complaints$Customer.Complaint) {
+  print(customer_complaints$Customer.Complaint[item])
+}
 
-complaint_types <- customer_complaints$Customer.Complaint[0:2224] # Returns the type of complaint found on index n:n
-# Change complaint_types to factor
-complaint_types <- sapply(complaint_types, factor)
-complaint_types
+complaint_types <- sapply(customer_complaints$Customer.Complaint, factor)
+count(complaint_types) # These are the distinct complaint types
 
+# Count the occurrences of each complaint types with relation to customer_complaints$Customer.Complaint
 
-# Table
-tabl1 <- table(complaint_types,customer_complaints$Customer.Complaint[0:2224] )
-tabl1
-
-# Find out how to view tables in R
-
-
-
-
-
-# count number of complaints
-#count(customer_complaints$Customer.Complaint) # Returns the count of each customer complaint within the data
-
-# query index 369
-#customer_complaints$Customer.Complaint[369] # Returns the type of complaint found on index 369
 
 # Set complaint_years to factor (effectively binning)
 #complaint_years <- year(v1)
