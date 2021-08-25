@@ -132,16 +132,11 @@ text(x1, y1, labels = name_of_days, cex = 0.7, pos=3)
 
 # Provide a table with the frequency of complaint types.
 # https://www.statology.org/create-table-in-r/
-# Create function to iterate through Customer.Complaint column and store the values in variable called complaint_types
-customer_type <- list()
-for (item in customer_complaints$Customer.Complaint) {
-  print(customer_complaints$Customer.Complaint[item])
-}
-
 complaint_types <- sapply(customer_complaints$Customer.Complaint, factor)
-count(complaint_types) # These are the distinct complaint types
+plyr::count(complaint_types) # These are the distinct complaint types; 1841
+complaint_types_table <- plyr::count(complaint_types)
+View(complaint_types_table)
 
-# Count the occurrences of each complaint types with relation to customer_complaints$Customer.Complaint
 
 
 # Set complaint_years to factor (effectively binning)
