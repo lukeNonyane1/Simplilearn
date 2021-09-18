@@ -230,6 +230,8 @@ View(calls_received_through_internet_and_ccarecalls)
 calls_received_through_internet_and_ccarecalls[,"Closed"]
 ccarecalls_internet_closed <- calls_received_through_internet_and_ccarecalls[,"Closed"]
 ccarecalls_internet_open <- calls_received_through_internet_and_ccarecalls[,"Open"]
+ccarecalls_internet_closed
+ccarecalls_internet_open
 
 ccarecall_closed <- ccarecalls_internet_closed["Customer Care Call"]
 ccarecall_closed
